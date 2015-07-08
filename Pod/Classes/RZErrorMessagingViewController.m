@@ -85,7 +85,7 @@ static CGFloat const kErrorMessagingViewVerticalPadding = 20.0f;
 {
     self.displayedError = error;
 
-    self.titleLabel.text = [error.localizedDescription uppercaseString];
+    self.titleLabel.text = error.localizedDescription;
     self.detailLabel.text = error.localizedRecoverySuggestion;
     
     switch ( [error rz_levelFromError] ) {
