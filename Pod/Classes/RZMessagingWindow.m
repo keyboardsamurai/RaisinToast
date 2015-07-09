@@ -300,46 +300,37 @@ static CGFloat const RZErrorWindowBlackoutAnimationInterval = 0.5f;
 
 -(UIStatusBarStyle)preferredStatusBarStyle
 {
-    UIViewController *topViewController = [RZRootMessagingViewController topViewController];
-
-    UIStatusBarStyle statusBarStyle;
-    
-    if ( [(RZMessagingWindow *)self.view.window errorIsBeingPresented] ) {
-        statusBarStyle = [super preferredStatusBarStyle];
-    }
-    else {
-        statusBarStyle = [topViewController preferredStatusBarStyle];
-    }
-    return statusBarStyle;
+    return UIStatusBarStyleLightContent;
 }
 
 -(UIViewController *)childViewControllerForStatusBarStyle
 {
-    UIViewController *topViewController = [RZRootMessagingViewController topViewController];
-    
-    UIViewController *childViewController;
-    if ( [(RZMessagingWindow *)self.view.window errorIsBeingPresented] ) {
-        childViewController = [self.childViewControllers lastObject];
-    }
-    else {
-        childViewController = [topViewController childViewControllerForStatusBarStyle];
-    }
-    return childViewController;
+//    UIViewController *topViewController = [RZRootMessagingViewController topViewController];
+//    
+//    UIViewController *childViewController;
+//    if ( [(RZMessagingWindow *)self.view.window errorIsBeingPresented] ) {
+//        childViewController = [self.childViewControllers lastObject];
+//    }
+//    else {
+//        childViewController = [topViewController childViewControllerForStatusBarStyle];
+//    }
+    // Recursion can lead to stack overflows
+    return nil;
     
 }
 
 -(BOOL)shouldAutorotate
 {
-    UIViewController *topViewController = [RZRootMessagingViewController topViewController];
+//    UIViewController *topViewController = [RZRootMessagingViewController topViewController];
     
-    return [topViewController shouldAutorotate];
+    return NO;
 }
 
 - (NSUInteger)supportedInterfaceOrientations
 {
-    UIViewController *topViewController = [RZRootMessagingViewController topViewController];
+//    UIViewController *topViewController = [RZRootMessagingViewController topViewController];
     
-    return [topViewController supportedInterfaceOrientations];
+    return UIInterfaceOrientationMaskPortrait;
 }
 
 #pragma mark - Helper class methods
