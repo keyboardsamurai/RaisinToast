@@ -146,6 +146,11 @@ static CGFloat const RZErrorWindowBlackoutAnimationInterval = 0.5f;
         RZMessageStrength strength = displayedMessage.strength;
         
         UIView *result = [super hitTest:point withEvent:event];
+        if([result isKindOfClass:[UIButton class] ] && result.tag==100){
+            // facebook share button found
+            return result;
+        }
+
         switch ( strength ) {
             case kRZMessageStrengthWeakAutoDismiss:
                 [self hideMessage:nil animated:displayedMessage.animated];
